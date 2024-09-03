@@ -1,7 +1,10 @@
 {
     "author": "Aoyama (omnisch@outlook.com)",
     "description": "Guangyun, A Phonology Dictionary of Middle Chinese",
+    "downloadUrl": "https://github.com/omnilingual/guangyun-for-yomitan/releases/download/alpha_1.0/guangyun_for_yomitan_a1.0.zip",
     "format": 3,
+    "indexUrl": "https://github.com/omnilingual/guangyun-for-yomitan/releases/latest/download/guangyun_index.json",
+    "isUpdatable": true,
     "revision": "aoyama_guangyun_a1.0",
     "title": "Guangyun"
 }
