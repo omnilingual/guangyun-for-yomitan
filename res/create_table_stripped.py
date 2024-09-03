@@ -15,13 +15,13 @@ indices = [
         '等',         #6
         '呼',         #7
         '聲調',       #8
-        '聲旁',       #9
-        '字類',       #10
-        '形聲-形',    #11
-        '形聲-聲',    #12
-        '釋義',       #13
-        '釋義補充',   #14
-        'A/B類分析',  #15
+        'A/B類分析',  #9
+        '聲旁',       #10
+        '字類',       #11
+        '形聲-形',    #12
+        '形聲-聲',    #13
+        '釋義',       #14
+        '釋義補充',   #15
         '聲形析微',   #16
     ]
 
@@ -38,16 +38,17 @@ with open('kanji_bank_1.json', 'w', encoding='utf-8') as o:
         
         
         expList = []
-        expList.append('"' + ''.join(items[3:9]) + '　' + items[9] + '聲"')
-        if items[10] == '':
-            items[10] = '形聲'
-        expList.append('"' + items[10] + '字　' + items[11] + items[12] + '"')
-        if items[14] != '':
-            expList.append('"' + items[13] + '（' + items[14] + '）"')
+        if items[9] != '':
+            expList.append('"' + ''.join(items[3:9]) + '（' + items[9] + '）　' + items[10] + '聲"')
         else:
-            expList.append('"' + items[13] + '"')
+            expList.append('"' + ''.join(items[3:9]) + '　' + items[10] + '聲"')
+        if items[11] == '':
+            items[11] = '形聲'
+        expList.append('"' + items[11] + '字　' + items[12] + items[13] + '"')
         if items[15] != '':
-            expList.append('"※' + indices[15] + '：' + items[15] + '"')
+            expList.append('"' + items[14] + '（' + items[15] + '）"')
+        else:
+            expList.append('"' + items[14] + '"')
         if items[16] != '':
             expList.append('"' + indices[16] + '：' + items[16] + '"')
         
