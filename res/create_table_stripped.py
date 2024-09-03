@@ -7,21 +7,21 @@ Created on Tue Sep  3 20:31:02 2024
 
 indices = [
         '字頭',       #0
-        '反切',       #1
-        '切韻擬音',   #2
-        '聲紐',       #3
-        '攝',         #4
-        '韻部',       #5
-        '等',         #6
-        '呼',         #7
-        '聲調',       #8
-        'A/B類分析',  #9
-        '聲旁',       #10
-        '字類',       #11
-        '形聲-形',    #12
-        '形聲-聲',    #13
-        '釋義',       #14
-        '釋義補充',   #15
+        '聲紐',       #1
+        '攝',         #2
+        '韻部',       #3
+        '等',         #4
+        '呼',         #5
+        '聲調',       #6
+        'A/B類分析',  #7
+        '反切',       #8
+        '聲旁',       #9
+        '切韻擬音',   #10
+        '釋義',       #11
+        '釋義補充',   #12
+        '字類',       #13
+        '形聲-形',    #14
+        '形聲-聲',    #15
         '聲形析微',   #16
     ]
 
@@ -34,21 +34,20 @@ with open('kanji_bank_1.json', 'w', encoding='utf-8') as o:
     for line in lines:
         items = line.strip().split(',')
         keyChr = items[0]
-        prn = items[1] + '切 ' + items[2]
+        prn = ''.join(items[1:7])
+        if items[7] != '':
+            prn += '（' + items[7] + '）'
+        prn += ' ' + items[8] + '切　' + items[9] + '聲 ' + items[10]
         
         
         expList = []
-        if items[9] != '':
-            expList.append('"' + ''.join(items[3:9]) + '（' + items[9] + '）　' + items[10] + '聲"')
+        if items[12] != '':
+            expList.append('"' + items[11] + '（' + items[12] + '）"')
         else:
-            expList.append('"' + ''.join(items[3:9]) + '　' + items[10] + '聲"')
-        if items[11] == '':
-            items[11] = '形聲'
-        expList.append('"' + items[11] + '字　' + items[12] + items[13] + '"')
-        if items[15] != '':
-            expList.append('"' + items[14] + '（' + items[15] + '）"')
-        else:
-            expList.append('"' + items[14] + '"')
+            expList.append('"' + items[11] + '"')
+        if items[13] == '':
+            items[13] = '形聲'
+        expList.append('"' + items[13] + '字◎' + items[14] + items[15] + '"')
         if items[16] != '':
             expList.append('"' + indices[16] + '：' + items[16] + '"')
         
