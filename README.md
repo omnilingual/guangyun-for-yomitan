@@ -2,4 +2,6 @@
 
 The Guangyun Dictionary for Yomitan
 
-![result sample](./images/result_sample.png)
+![Sample](./images/result_sample.png)
+
+Database comes from Internet.
